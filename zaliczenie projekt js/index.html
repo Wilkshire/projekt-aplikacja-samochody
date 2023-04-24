@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="container-fluid p-5">
+        <div class="row d-none" id="list">
+            <div class="col-6 mb-5">
+                <div class="card">
+                    <img class="card-img-top" src="media/mercedes-a-amg.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Mercedes-AMG A 45</h5>
+                        <div class="car-info">
+                            <ul>
+                                <li name="price" data-attr-value="324900">324 900 PLN</li>
+                                <li name="year" data-attr-value="2022">2022</li>
+                                <li name="power" data-attr-value="421">421KM</li>
+                                <li name="mileage" data-attr-value="3500">3500km</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-5">
+                <div class="card">
+                    <img class="card-img-top" src="media/cupra-formentor.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Cupra Formentor</h5>
+                        <div class="car-info">
+                            <ul>
+                                <li name="price" data-attr-value="321000">321 000 PLN</li>
+                                <li name="year" data-attr-value="2022">2022</li>
+                                <li name="power" data-attr-value="390 ">390KM</li>
+                                <li name="mileage" data-attr-value="2500">2500km</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-5">
+                <div class="card">
+                    <img class="card-img-top" src="media/audi-rs7.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Audi RS7</h5>
+                        <div class="car-info">
+                            <ul>
+                                <li name="price" data-attr-value="719000">719 000 PLN</li>
+                                <li name="year" data-attr-value="2023">2023</li>
+                                <li name="power" data-attr-value="600">600KM</li>
+                                <li name="mileage" data-attr-value="1000">1000km</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-5">
+                <div class="card">
+                    <img class="card-img-top" src="media/volvo-xc90.jpg">
+                    <div class="card-body">
+                        <h5 class="card-title">Volvo XC 90</h5>
+                        <div class="car-info">
+                            <ul>
+                                <li name="price" data-attr-value="189800">189 800 PLN</li>
+                                <li name="year" data-attr-value="2018">2018</li>
+                                <li name="power" data-attr-value="235">235KM</li>
+                                <li name="mileage" data-attr-value="76000">76 000km</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row form d-none" id="checkoutForm">
+            <div class="d-flex justify-content-center">
+                <div class="col-6">
+                    <h2>Formularz zakupu</h2>
+                    <form class="form-horizontal" method="POST" id="checkout" onsubmit="return manager.validateForm();">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="payementOption" id="cash"
+                                value="Gotówka" />
+                            <label class="form-check-label" for="cash">Gotówka</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="payementOption" id="Leasing"
+                                value="leasing" />
+                            <label class="form-check-label" for="leasing">Leasing</label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="clientName">Imię i nazwisko</label>
+                            <input type="text" class="form-control" name="clientName" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="place">Miejsce odbioru</label>
+                            <input type="text" class="form-control" name="place" />
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="pickupDate">Data odbioru</label>
+                            <select class="form-control" name="pickupDate">
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <h4>Akcesoria</h4>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-11">
+                                        <label for="optionsToSelect">Wybierz akcesoria</label>
+                                        <select id="optionsToSelect" class="form-select" multiple>
+                                        </select>
+                                    </div>
+                                    <div class="col-1 d-flex align-items-center">
+                                        <button type="button" id="addOption" class="btn btn-success">
+                                            <span>+</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col-11">
+                                        <label for="optionsSelected">Wybrane akcesoria</label>
+                                        <select id="optionsSelected" name="optionsSelected" class="form-select"
+                                            multiple>
+                                        </select>
+                                    </div>
+                                    <div class="col-1 d-flex align-items-center">
+                                        <button type="button" id="removeOption" class="btn btn-danger">
+                                            <span>-</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-success">Zakup</button>
+                            <button name="backToList" type="button" class="btn btn-secondary"
+                                onclick="manager.showList();">Powrót do listy</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-2" id="checkoutInfo">
+                    <h5 id="selectedCar"></h5>
+                    <h5 id="currentPrice"></h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="row form d-none" id="summary">
+            <div class="col-6">
+                <h1>Potwierdzenie zakupu</h1>
+                <h4>Dziękujemy za zakup w naszym sklepie.</h4>
+                <span id="totalPrice"></span><br>
+                <span id="payementMethod"></span>
+                <img class="img-fluid" id="summaryImage">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button name="backToList" type="button" class="btn btn-secondary"
+                        onclick="manager.showList();">Powrót
+                        do listy</button>
+                </div>
+            </div>
+            <div class="col-6" id="summaryInfo">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
